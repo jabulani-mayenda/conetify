@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Connectify - Welcome</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    /* Global Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #000;
+      color: #fff;
+    }
+    /* Navigation Bar */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.8);
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+    nav .logo {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: #1DB954;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    nav li {
+      margin-left: 20px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1em;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #1DB954;
+    }
+    /* Hero Section */
+    header {
+      position: relative;
+      height: 100vh;
+      background: url('https://via.placeholder.com/1600x900?text=Spotify+Style+Landing+Page') no-repeat center center/cover;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
+    }
+    header .content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 0 20px;
+    }
+    header h1 {
+      font-size: 4em;
+      margin: 0;
+    }
+    header p {
+      font-size: 1.5em;
+      margin: 20px 0;
+    }
+    .cta-button {
+      background: #1DB954;
+      color: #fff;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .cta-button:hover {
+      background: #1ed760;
+    }
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.8em; }
+      header p { font-size: 1.2em; }
+      nav li { margin-left: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">Connectify</div>
+    <ul>
+      <li><a href="market.html">Music</a></li>
+      <li><a href="networking.html">Networking</a></li>
+      <li><a href="jobs.html">Jobs</a></li>
+      <li><a href="community.html">Community</a></li>
+    </ul>
+  </nav>
+  
+  <!-- Hero Section -->
+  <header>
+    <div class="content">
+      <h1>Welcome to Connectify</h1>
+      <p>Your integrated platform for music, networking, jobs, and community.</p>
+      <button class="cta-button" onclick="window.location.href='market.html'">Get Started</button>
+    </div>
+  </header>
+</body>
+</html>
