@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Connectify - Jobs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    /* Global Reset */
+    * { box-sizing: border-box; }
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f4;
+      color: #333;
+    }
+    
+    /* Navigation Bar */
+    nav {
+      background: #222;
+      color: #fff;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav .logo {
+      font-size: 1.8em;
+      color: #1DB954;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    nav li { margin-left: 20px; }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+    }
+    nav a:hover { text-decoration: underline; }
+    
+    /* Header Section */
+    header {
+      background: url('https://via.placeholder.com/1600x400?text=Jobs+Page') no-repeat center center/cover;
+      height: 300px;
+      position: relative;
+      color: #fff;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
+    }
+    header .header-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 0 20px;
+    }
+    header h1 { font-size: 3em; margin: 0; }
+    header p { font-size: 1.2em; margin-top: 10px; }
+    
+    /* Main Container */
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+    
+    /* Job Search & Filters */
+    .job-search {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .job-search input[type="text"],
+    .job-search select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      flex: 1 1 200px;
+    }
+    .job-search button {
+      padding: 10px 20px;
+      background: #1DB954;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .job-search button:hover {
+      background: #17a44c;
+    }
+    
+    /* Job Listings Grid */
+    .job-listings {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .job-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s;
+    }
+    .job-card:hover {
+      transform: translateY(-5px);
+    }
+    .job-card .card-content {
+      padding: 15px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .job-card h3 {
+      margin: 0;
+      color: #1DB954;
+    }
+    .job-card p {
+      font-size: 0.9em;
+      line-height: 1.4;
+      margin: 10px 0;
+    }
+    .job-card .details {
+      font-size: 0.85em;
+      color: #666;
+    }
+    .job-card .btn {
+      margin-top: 15px;
+      background: #1DB954;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 4px;
+      text-decoration: none;
+      text-align: center;
+      transition: background 0.3s;
+    }
+    .job-card .btn:hover {
+      background: #17a44c;
+    }
+    
+    /* Pagination */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+      gap: 10px;
+    }
+    .pagination button {
+      padding: 8px 12px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .pagination button:hover {
+      background: #eee;
+    }
+    .pagination button.active {
+      background: #1DB954;
+      color: #fff;
+      border-color: #1DB954;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .job-search {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">Connectify</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="market.html">Music</a></li>
+      <li><a href="networking.html">Networking</a></li>
+      <li><a href="jobs.html">Jobs</a></li>
+      <li><a href="community.html">Community</a></li>
+    </ul>
+  </nav>
+  
+  <!-- Header Section -->
+  <header>
+    <div class="header-content">
+      <h1>Find Your Next Opportunity</h1>
+      <p>Explore thousands of job listings tailored for you.</p>
+    </div>
+  </header>
+  
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Job Search & Filter Section -->
+    <div class="job-search">
+      <input type="text" id="keyword" placeholder="Search by keyword...">
+      <select id="location">
+        <option value="">Select Location</option>
+        <option value="malawi">Malawi</option>
+        <option value="usa">USA</option>
+        <option value="uk">UK</option>
+        <option value="canada">Canada</option>
+      </select>
+      <select id="jobType">
+        <option value="">Job Type</option>
+        <option value="fulltime">Full Time</option>
+        <option value="parttime">Part Time</option>
+        <option value="contract">Contract</option>
+        <option value="internship">Internship</option>
+      </select>
+      <button onclick="filterJobs()">Search</button>
+    </div>
+    
+    <!-- Job Listings -->
+    <div class="job-listings" id="jobListings">
+      <!-- Sample Job Card 1 -->
+      <div class="job-card" data-keyword="developer" data-location="usa" data-jobtype="fulltime">
+        <div class="card-content">
+          <h3>Frontend Developer</h3>
+          <p class="details">Company: TechCorp | Location: USA | Full Time</p>
+          <p>Seeking a skilled frontend developer with experience in React, JavaScript, and modern CSS techniques.</p>
+          <a href="#" class="btn">View Details</a>
+        </div>
+      </div>
+      <!-- Sample Job Card 2 -->
+      <div class="job-card" data-keyword="designer" data-location="malawi" data-jobtype="parttime">
+        <div class="card-content">
+          <h3>UI/UX Designer</h3>
+          <p class="details">Company: Creative Inc. | Location: Malawi | Part Time</p>
+          <p>Looking for a creative designer with strong UI/UX portfolio and proficiency in design tools.</p>
+          <a href="#" class="btn">View Details</a>
+        </div>
+      </div>
+      <!-- Sample Job Card 3 -->
+      <div class="job-card" data-keyword="manager" data-location="uk" data-jobtype="fulltime">
+        <div class="card-content">
+          <h3>Project Manager</h3>
+          <p class="details">Company: Global Solutions | Location: UK | Full Time</p>
+          <p>Experienced project manager needed to oversee multi-national projects and lead teams.</p>
+          <a href="#" class="btn">View Details</a>
+        </div>
+      </div>
+      <!-- Sample Job Card 4 -->
+      <div class="job-card" data-keyword="internship" data-location="canada" data-jobtype="internship">
+        <div class="card-content">
+          <h3>Marketing Intern</h3>
+          <p class="details">Company: Startup Hub | Location: Canada | Internship</p>
+          <p>An exciting opportunity for a marketing student to gain real-world experience in digital campaigns.</p>
+          <a href="#" class="btn">View Details</a>
+        </div>
+      </div>
+      <!-- More job cards can be added here -->
+    </div>
+    
+    <!-- Pagination (Optional) -->
+    <div class="pagination">
+      <button class="active">1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>Next</button>
+    </div>
+  </div>
+  
+  <!-- JavaScript for Filtering Jobs -->
+  <script>
+    function filterJobs() {
+      const keyword = document.getElementById('keyword').value.toLowerCase();
+      const location = document.getElementById('location').value.toLowerCase();
+      const jobType = document.getElementById('jobType').value.toLowerCase();
+      
+      const jobCards = document.querySelectorAll('.job-card');
+      
+      jobCards.forEach(card => {
+        const cardKeyword = card.getAttribute('data-keyword').toLowerCase();
+        const cardLocation = card.getAttribute('data-location').toLowerCase();
+        const cardJobType = card.getAttribute('data-jobtype').toLowerCase();
+        
+        let isVisible = true;
+        
+        if (keyword && !cardKeyword.includes(keyword)) {
+          isVisible = false;
+        }
+        if (location && cardLocation !== location) {
+          isVisible = false;
+        }
+        if (jobType && cardJobType !== jobType) {
+          isVisible = false;
+        }
+        
+        card.style.display = isVisible ? 'block' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
