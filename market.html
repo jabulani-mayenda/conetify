@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Connectify - Marketplace</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    /* Global Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f4;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+    a {
+      text-decoration: none;
+      color: #1DB954;
+    }
+    
+    /* Navigation Bar */
+    nav {
+      background: #222;
+      color: #fff;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav .logo {
+      font-size: 1.8em;
+      color: #1DB954;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    nav li {
+      margin-left: 20px;
+    }
+    nav a {
+      color: #fff;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Header Section */
+    header {
+      background: url('https://via.placeholder.com/1600x400?text=Marketplace') no-repeat center center/cover;
+      height: 300px;
+      position: relative;
+      color: #fff;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+      background: rgba(0,0,0,0.5);
+    }
+    header .header-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 0 20px;
+    }
+    header h1 {
+      font-size: 3em;
+      margin: 0;
+    }
+    header p {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+    
+    /* Main Container */
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+    
+    /* Marketplace Search & Filter */
+    .market-search {
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .market-search input[type="text"],
+    .market-search select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      flex: 1 1 200px;
+    }
+    .market-search button {
+      padding: 10px 20px;
+      background: #1DB954;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .market-search button:hover {
+      background: #17a44c;
+    }
+    
+    /* Marketplace Listings Grid */
+    .market-listings {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .market-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+    .market-card:hover {
+      transform: translateY(-5px);
+    }
+    .market-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .market-card .card-content {
+      padding: 15px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .market-card h3 {
+      margin: 0;
+      color: #1DB954;
+    }
+    .market-card p {
+      font-size: 0.9em;
+      margin: 10px 0;
+    }
+    .market-card .price {
+      font-weight: bold;
+      color: #333;
+    }
+    .market-card .btn {
+      margin-top: 10px;
+      display: inline-block;
+      background: #1DB954;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 4px;
+      text-align: center;
+      transition: background 0.3s;
+    }
+    .market-card .btn:hover {
+      background: #17a44c;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5em;
+      }
+      .market-search {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">Connectify</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="market.html">Marketplace</a></li>
+      <li><a href="networking.html">Networking</a></li>
+      <li><a href="jobs.html">Jobs</a></li>
+      <li><a href="community.html">Community</a></li>
+    </ul>
+  </nav>
+  
+  <!-- Header Section -->
+  <header>
+    <div class="header-content">
+      <h1>Marketplace</h1>
+      <p>Buy, sell, and discover great deals near you.</p>
+    </div>
+  </header>
+  
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Search & Filter Section -->
+    <div class="market-search">
+      <input type="text" id="productKeyword" placeholder="Search products...">
+      <select id="category">
+        <option value="">Select Category</option>
+        <option value="electronics">Electronics</option>
+        <option value="fashion">Fashion</option>
+        <option value="home">Home & Garden</option>
+        <option value="vehicles">Vehicles</option>
+      </select>
+      <select id="priceRange">
+        <option value="">Price Range</option>
+        <option value="low">Under $50</option>
+        <option value="mid">$50 - $200</option>
+        <option value="high">Over $200</option>
+      </select>
+      <button onclick="filterProducts()">Search</button>
+    </div>
+    
+    <!-- Marketplace Listings -->
+    <div class="market-listings" id="marketListings">
+      <!-- Sample Product Card 1 -->
+      <div class="market-card" data-keyword="phone" data-category="electronics" data-price="high">
+        <img src="https://via.placeholder.com/400x180?text=Smartphone" alt="Smartphone">
+        <div class="card-content">
+          <h3>Latest Smartphone</h3>
+          <p class="price">$699</p>
+          <p>Brand new smartphone with cutting-edge features.</p>
+          <a href="#" class="btn">View Details</a>
+        </div>
+      </div>
+      <!-- Sample Product Card 2 -->
+      <div class="market-card" data-keyword="jacket" data-category="fashion" data-price="mid">
+        <img src="https://via.placeholder.com/400x180?text=Jacket" alt="Jacket">
+        <div class="card-content">
+          <h3>Stylish Jacket</h3>
+          <p class="price">$89</p>
+          <p>Lightly used designer jacket in excellent condition.</p>
+          <a href="#" class="btn">View Details</a>
+        </div>
+      </div>
+      <!-- Sample Product Card 3 -->
+      <div class="market-card" data-keyword="sofa" data-category="home" data-price="high">
+        <img src="https://via.placeholder.com/400x180?text=Sofa" alt="Sofa">
+        <div class="card-content">
+          <h3>Modern Sofa</h3>
+          <p class="price">$350</p>
+          <p>Comfortable and stylish sofa for your living room.</p>
+          <a href="#" class="btn">View Details</a>
+        </div>
+      </div>
+      <!-- Sample Product Card 4 -->
+      <div class="market-card" data-keyword="car" data-category="vehicles" data-price="high">
+        <img src="https://via.placeholder.com/400x180?text=Car" alt="Car">
+        <div class="card-content">
+          <h3>Used Sedan</h3>
+          <p class="price">$5,200</p>
+          <p>Well-maintained used car with low mileage.</p>
+          <a href="#" class="btn">View Details</a>
+        </div>
+      </div>
+      <!-- More product cards can be added here -->
+    </div>
+  </div>
+  
+  <!-- JavaScript for Filtering Products -->
+  <script>
+    function filterProducts() {
+      const keyword = document.getElementById('productKeyword').value.toLowerCase();
+      const category = document.getElementById('category').value.toLowerCase();
+      const priceRange = document.getElementById('priceRange').value.toLowerCase();
+      
+      const productCards = document.querySelectorAll('.market-card');
+      
+      productCards.forEach(card => {
+        const cardKeyword = card.getAttribute('data-keyword').toLowerCase();
+        const cardCategory = card.getAttribute('data-category').toLowerCase();
+        const cardPrice = card.getAttribute('data-price').toLowerCase();
+        
+        let isVisible = true;
+        
+        if (keyword && !cardKeyword.includes(keyword)) {
+          isVisible = false;
+        }
+        if (category && cardCategory !== category) {
+          isVisible = false;
+        }
+        if (priceRange) {
+          if (priceRange === 'low' && cardPrice !== 'low') {
+            isVisible = false;
+          } else if (priceRange === 'mid' && cardPrice !== 'mid') {
+            isVisible = false;
+          } else if (priceRange === 'high' && cardPrice !== 'high') {
+            isVisible = false;
+          }
+        }
+        
+        card.style.display = isVisible ? 'block' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
