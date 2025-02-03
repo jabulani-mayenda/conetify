@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Connectify - Networking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    /* Similar global styles */
+    *, *::before, *::after { box-sizing: border-box; }
+    body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+    nav {
+      background: #222;
+      color: #fff;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav .logo { font-size: 1.8em; color: #1DB954; }
+    nav ul { list-style: none; display: flex; margin: 0; padding: 0; }
+    nav li { margin-left: 20px; }
+    nav a { color: #fff; text-decoration: none; }
+    nav a:hover { color: #1DB954; }
+    header {
+      background: url('https://via.placeholder.com/1600x400?text=Networking+Page') no-repeat center center/cover;
+      height: 400px;
+      position: relative;
+      color: #fff;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top:0; left:0; right:0; bottom:0;
+      background: rgba(0,0,0,0.6);
+    }
+    header .content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 0 20px;
+    }
+    header h1 { font-size: 3em; margin: 0; }
+    .container { padding: 20px; max-width: 1200px; margin: 0 auto; }
+    .section-header { text-align: center; font-size: 2em; margin-bottom: 20px; color: #1DB954; }
+    .card { background: #fff; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); overflow: hidden; margin-bottom: 20px; }
+    .card img { width: 100%; height: 200px; object-fit: cover; }
+    .card-content { padding: 15px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">Connectify</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="market.html">Music</a></li>
+      <li><a href="jobs.html">Jobs</a></li>
+      <li><a href="community.html">Community</a></li>
+    </ul>
+  </nav>
+  <header>
+    <div class="content">
+      <h1>Professional Networking</h1>
+      <p>Connect with industry leaders and expand your network.</p>
+    </div>
+  </header>
+  <div class="container">
+    <h2 class="section-header">Featured Profiles</h2>
+    <!-- Sample Profile Card -->
+    <div class="card">
+      <img src="https://via.placeholder.com/800x200?text=Profile" alt="Profile">
+      <div class="card-content">
+        <h3>Jane Doe</h3>
+        <p>Industry: Technology</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
